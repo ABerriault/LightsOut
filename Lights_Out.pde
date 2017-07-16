@@ -13,8 +13,8 @@
 *
 *
 ***********************************************************************/
-// store all game buttons in a global variable
-GameButton[][] game_buttons = new GameButton[5][5];
+
+GameButton[][] game_buttons = new GameButton[5][5];                             // Create a GameButton 2D Array that is 5x5.
 
 
 /************************************************************************
@@ -31,7 +31,7 @@ void setup() {
   // create buttons, and put their locations onto the screen
   for (int i = 0; i < 5; i++) {
     for (int j = 0; j < 5; j++) {
-      game_buttons[i][j] = new GameButton(120*i, 120*j, 120, 120);
+      game_buttons[i][j] = new GameButton(120*i, 120*j, 120, 120);          // Fill the 2D Array with new GameButton's using the GameButton Constructor.
     }
   }
 
@@ -79,7 +79,7 @@ void updateButtons() {
   for (GameButton[] row : game_buttons) {
     for (GameButton button : row) {
       if (button.isClicked(mouseX, mouseY)) {        
-        button.changeState();
+        button.changeState();                                                  // Call the gameButton Class method changeState()
       }
     }
   }
@@ -95,7 +95,7 @@ void updateButtons() {
 void drawButtons() {
   for (GameButton[] row : game_buttons) {
     for (GameButton button : row) {
-      button.draw();
+      button.draw();                                                          // Call the gameButton Class method draw()
     }
   }
 }
@@ -121,13 +121,26 @@ void mouseClicked() {
 * It stores its neighbouring gamebuttons in a list called neighbours.
 * It also stores its current state of ON or OFF.
 *
+* Java Class Syntax looks like this.
+* public class className {
+*   //Class Variables
+*   
+*   public className (arguments){ // This is the constructor
+*     // Initialization code here for each instance.
+*   }
+*
+*   public void methodName(arguments){
+*     // Method Code Here
+*   }
+* }
 ***********************************************************************/
-public class GameButton {
+
+public class GameButton {                                                 // Should be a public class
   int x, y, w, h;
   int state;
   GameButton[] neighbours = new GameButton[0];
 
-  public GameButton (int x_pos, int y_pos, int width, int height) {
+  public GameButton (int x_pos, int y_pos, int width, int height) {       // Should take 4 integer arguments
     x = x_pos;
     y = y_pos;
     w = width;
@@ -165,7 +178,7 @@ public class GameButton {
   }
 
   // method function to change the state of the button
-  public void changeState() {
+  public void changeState() {                                           // Flip-Flop the state from 0 to 1 and 1 to 0.
     if (state == 1) {
       state = 0;
     } else {
