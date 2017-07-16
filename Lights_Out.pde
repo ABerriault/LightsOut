@@ -1,8 +1,29 @@
+// Filename: Lights Out
+// Camp: Venture Codemakers Advanced
+// Date: Summer 2017
+// Camper Name: 
 // LightsOut program, in the event-based object-oriented paradigm
 
+
+/************************************************************************
+*                         GLOBAL VARIABLES
+*  
+*  These are variables that are used throughout the game. They set up 
+*  things such as the player and lists for enemies and projectiles.
+*
+*
+***********************************************************************/
 // store all game buttons in a global variable
 GameButton[][] game_buttons = new GameButton[5][5];
 
+
+/************************************************************************
+*                         SETUP METHOD
+*  
+*   This code is run ONLY once at the very begining of the program.
+*
+*
+***********************************************************************/
 void setup() {
   size(600, 600);
   background(255);
@@ -35,11 +56,25 @@ void setup() {
 }
 
 
+/************************************************************************
+*                         DRAW METHOD
+*  
+*   This code is run EVERY FRAME while the programming is running.
+*
+*
+***********************************************************************/
 void draw() {
-  draw_buttons();
+  drawButtons();
 }
 
-void update_buttons() {
+
+/************************************************************************
+*                         updateButtons METHOD
+*  
+*  This method updates the GameButtons state to be stored in the list.
+*
+***********************************************************************/
+void updateButtons() {
   // change the state of all neighbours
   for (GameButton[] row : game_buttons) {
     for (GameButton button : row) {
@@ -50,7 +85,14 @@ void update_buttons() {
   }
 }
 
-void draw_buttons() {
+
+/************************************************************************
+*                         drawButtons METHOD
+*  
+*  This method draws the GameButtons to the screen.
+*
+***********************************************************************/
+void drawButtons() {
   for (GameButton[] row : game_buttons) {
     for (GameButton button : row) {
       button.draw();
@@ -58,18 +100,28 @@ void draw_buttons() {
   }
 }
 
-// mouseClicked is a function that automatically runs after you click
-// on the game screen
-//
-// this means you do not have to constantly check for button presses in
-// the main draw() loop
-//
-// clicking on the screen implies clicking on a button,
-// so we'll check for button presses here
+
+/************************************************************************
+*                         mouseClicked METHOD
+*  
+* mouseClicked is a function that automatically runs after you click on the game screen. 
+* This means you do not have to constantly check for button presses in the main draw() loop.
+* Clicking on the screen implies clicking on a button, so we'll check for button presses here
+*
+***********************************************************************/
 void mouseClicked() {
-  update_buttons();
+  updateButtons();
 }
 
+
+/************************************************************************
+*                         GameButton CLASS
+* This is an object.
+* It creates a single GameButton every time an instance is created.
+* It stores its neighbouring gamebuttons in a list called neighbours.
+* It also stores its current state of ON or OFF.
+*
+***********************************************************************/
 public class GameButton {
   int x, y, w, h;
   int state;
