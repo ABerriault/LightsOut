@@ -48,4 +48,4 @@ if (state == 1) {
 ```
 
 
-Created by @jimrustle. Modified by [Andrew Berriault](https://github.com/ABerriault) for *McMaster Venture Engineering & Science*
+Created by [Jimmy](https://github.com/jimrustle). Modified by [Andrew Berriault](https://github.com/ABerriault) for *McMaster Venture Engineering & Science*
